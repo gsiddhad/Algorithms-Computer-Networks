@@ -9,11 +9,11 @@ using namespace std;
 
 int main()
 {
-	int f,w;
-	cout<<" Enter The Number Of Frames : ";
-	cin>>f;
-	cout<<" Enter Window Size : ";
-	cin>>w;
-	sender(f,w);
+	int f, w;
+	cout << " Enter The Number Of Frames : ";
+	cin >> f;
+	cout << " Enter Window Size : ";
+	cin >> w;
+	sender(f, w);
 	return 0;
 }

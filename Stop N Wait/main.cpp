@@ -9,9 +9,9 @@ using namespace std;
 
 int main()
 {
-    int n=0;
-    cout<<" Enter The Number Of Frames : ";
-    cin>>n;
+    int n = 0;
+    cout << " Enter The Number Of Frames : ";
+    cin >> n;
     sender(n);
     return 0;
 }

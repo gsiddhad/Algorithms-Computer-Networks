@@ -12,60 +12,60 @@
 #include "cmath"
 using namespace std;
 
-static int done=0;
+static int done = 0;
 void sender(int, int);
-int receiver(int[],bool[],int);
+int receiver(int[], bool[], int);
 
-void sender(int f,const int w)
+void sender(int f, const int w)
 {
-	int frames[w+1],win=0;
-	bool ack[w+1];
+	int frames[w + 1], win = 0;
+	bool ack[w + 1];
 
-	for(int j=0;j<=w;j++)
-		ack[j]=0;
+	for (int j = 0; j <= w; j++)
+		ack[j] = 0;
 
-	for(int i=0;i<f;)
+	for (int i = 0; i < f;)
 	{
-		win=(f-i<w) ? (f-i):(w);
-		for(int j=0; j<win; j++,i++)
-			frames[j]=i;
+		win = (f - i < w) ? (f - i) : (w);
+		for (int j = 0; j < win; j++, i++)
+			frames[j] = i;
 
-		cout<<"\n Frames Sent : "<<win<<" | ";
-		for(int j=0;j<win;j++)
-			cout<<frames[j]+1<<" ";
+		cout << "\n Frames Sent : " << win << " | ";
+		for (int j = 0; j < win; j++)
+			cout << frames[j] + 1 << " ";
 
-		i=receiver(frames,ack,win);
-		if(i==frames[0])
-			cout<<"\n Time Out... Resending... ";
+		i = receiver(frames, ack, win);
+		if (i == frames[0])
+			cout << "\n Time Out... Resending... ";
 	}
 }
 
-int receiver(int frames[],bool ack[],int win)
+int receiver(int frames[], bool ack[], int win)
 {
-	bool random=0;
-	for(int i=0;i<win;i++)
+	bool random = 0;
+	for (int i = 0; i < win; i++)
 	{
-		switch(rand()%4)
+		switch (rand() % 4)
 		{
-			case 0:
-			case 1:
-			case 2:
-				random=1;
-				break;
-			default:
-				random=0;
+		case 0:
+		case 1:
+		case 2:
+			random = 1;
+			break;
+		default:
+			random = 0;
 		}
-		ack[i]=random;
+		ack[i] = random;
 	}
 
-	cout<<"\n Frames Received ";
-		if(win%100 > 9)
-			cout<<" ";
-		cout<<"| ";
+	cout << "\n Frames Received ";
+	if (win % 100 > 9)
+		cout << " ";
+	cout << "| ";
 
-	for(int i=0;i<win && ack[i];i++,done++)
-		cout<<frames[i]+1<<" ";
-	cout<<endl;
+	for (int i = 0; i < win && ack[i]; i++, done++)
+		cout << frames[i] + 1 << " ";
+	cout << endl;
 	return done;
 }
 
